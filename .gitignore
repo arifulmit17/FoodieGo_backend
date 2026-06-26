@@ -1,0 +1,65 @@
+# ==========================
+# Environment Variables
+# ==========================
+.env
+.env.local
+.env.development
+.env.production
+
+# ==========================
+# Build Output
+# ==========================
+bin/
+dist/
+build/
+
+# Go binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binaries
+*.test
+
+# Coverage reports
+*.out
+coverage.out
+
+# Go workspace
+go.work
+go.work.sum
+
+# Vendor (ignore if not committing dependencies)
+vendor/
+
+# ==========================
+# Uploaded Files
+# ==========================
+uploads/*
+!uploads/.gitkeep
+
+# ==========================
+# IDE
+# ==========================
+.vscode/
+.idea/
+
+# ==========================
+# OS Files
+# ==========================
+.DS_Store
+Thumbs.db
+
+# ==========================
+# Logs
+# ==========================
+*.log
+
+# ==========================
+# Temporary Files
+# ==========================
+tmp/
+temp/
+*.tmp
