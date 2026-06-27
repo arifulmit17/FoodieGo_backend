@@ -3,6 +3,8 @@ package main
 import (
 	"net/http"
 
+	"foodiego/internal/config"
+
 	"github.com/labstack/echo/v5"
 	"github.com/labstack/echo/v5/middleware"
 )
@@ -12,6 +14,7 @@ func main() {
 
 	e.Use(middleware.RequestLogger())
 	e.Use(middleware.Recover())
+	config.ConnectDB()
 
 	e.GET("/", func(c *echo.Context) error {
 		return c.JSON(http.StatusOK, map[string]string{"message": "Hello, World!"})
