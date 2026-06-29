@@ -16,4 +16,5 @@ func RegisterRoutes(e *echo.Echo, db *gorm.DB) {
 
 	api.POST("/register", userHandler.Register)
 	api.POST("/login", userHandler.Login)
+	api.GET("/me", userHandler.Me)
 }

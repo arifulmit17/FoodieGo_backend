@@ -1,6 +1,7 @@
 package user
 
 import (
+	"fmt"
 	"net/http"
 
 	"foodiego/internal/user/dto"
@@ -64,6 +65,7 @@ func (h *UserHandler) Login(c *echo.Context) error {
 func (h *UserHandler) Me(c *echo.Context) error {
 
 	userID, ok := c.Get("userID").(string)
+	fmt.Println(userID)
 	if !ok {
 		return c.JSON(http.StatusUnauthorized, map[string]any{
 			"message": "Unauthorized",
