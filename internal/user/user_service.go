@@ -2,9 +2,9 @@ package user
 
 import (
 	"errors"
-	"foodiego/internal/dto"
 	"foodiego/internal/models"
-	repository "foodiego/internal/user"
+	"foodiego/internal/user/dto"
+
 	"foodiego/internal/utils"
 
 	"gorm.io/gorm"
@@ -17,16 +17,15 @@ type UserService interface {
 }
 
 type userService struct {
-	userRepo repository.UserRepository
+	userRepo UserRepository
 }
 
-func NewUserService(userRepo repository.UserRepository) UserService {
+func NewUserService(userRepo UserRepository) UserService {
 	return &userService{
 		userRepo: userRepo,
 	}
 }
 
-// Register User
 func (s *userService) Register(req dto.RegisterRequest) (*dto.RegisterResponse, error) {
 
 	// Check if email already exists
@@ -40,7 +39,6 @@ func (s *userService) Register(req dto.RegisterRequest) (*dto.RegisterResponse, 
 		return nil, err
 	}
 
-	// Hash password
 	hashedPassword, err := utils.HashPassword(req.Password)
 	if err != nil {
 		return nil, err
@@ -65,7 +63,6 @@ func (s *userService) Register(req dto.RegisterRequest) (*dto.RegisterResponse, 
 	}, nil
 }
 
-// Login
 func (s *userService) Login(req dto.LoginRequest) (*dto.LoginResponse, error) {
 
 	user, err := s.userRepo.FindByEmail(req.Email)
@@ -93,7 +90,6 @@ func (s *userService) Login(req dto.LoginRequest) (*dto.LoginResponse, error) {
 	}, nil
 }
 
-// Get Logged-in User
 func (s *userService) GetProfile(id string) (*dto.UserResponse, error) {
 
 	user, err := s.userRepo.FindByID(id)

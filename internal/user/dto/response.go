@@ -6,3 +6,14 @@ type RegisterResponse struct {
 	Email string `json:"email"`
 	Role  string `json:"role"`
 }
+type LoginResponse struct {
+	Token string       `json:"token"`
+	User  UserResponse `json:"user"`
+}
+
+type UserResponse struct {
+	ID    string `json:"id"`
+	Name  string `json:"name"`
+	Email string `json:"email"`
+	Role  string `json:"role"`
+}

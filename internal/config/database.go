@@ -5,8 +5,6 @@ import (
 	"log"
 	"os"
 
-	"foodiego/internal/models"
-
 	"github.com/joho/godotenv"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -29,12 +27,12 @@ func ConnectDB() {
 
 	fmt.Println("✅ Database connected successfully")
 
-	DB.AutoMigrate(
-		&models.User{},
-		&models.Food{},
-		&models.Cart{},
-		&models.CartItem{},
-		&models.Order{},
-		&models.OrderItem{},
-	)
+	// DB.AutoMigrate(
+	// 	&models.User{},
+	// 	&models.Food{},
+	// 	&models.Cart{},
+	// 	&models.CartItem{},
+	// 	&models.Order{},
+	// 	&models.OrderItem{},
+	// )
 }
